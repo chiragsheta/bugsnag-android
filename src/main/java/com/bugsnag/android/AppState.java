@@ -39,10 +39,13 @@ class AppState implements JsonStream.Streamable {
     public void toStream(JsonStream writer) {
         writer.beginObject();
             writer.name("duration").value(duration);
-            writer.name("inForeground").value(inForeground);
             writer.name("activeScreen").value(activeScreen);
             writer.name("memoryUsage").value(memoryUsage);
             writer.name("lowMemory").value(lowMemory);
+
+            if(inForeground != null) {
+                writer.name("inForeground").value(inForeground);
+            }
         writer.endObject();
     }
 
